@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import Layout from '../components/Layout';
 import Product from '../models/Product';
@@ -47,10 +47,10 @@ export default function Home(props) {
           </NextLink>
         ))}
       </Carousel> */}
-      <Typography variant="h2">Popular Product</Typography>
-      <Grid container spacing={3}>
+      <h2 style={{ color: 'rgba(60, 51, 79, 1)' }}>New Trending now</h2>
+      <Grid container spacing={4}>
         {topRatedProducts.map((product) => (
-          <Grid item md={4} key={product.name}>
+          <Grid item xs={6} md={3} key={product.name}>
             <ProductItem
               product={product}
               addToCartHandler={addToCartHandler}
@@ -72,9 +72,9 @@ export async function getServerSideProps() {
   const topRatedProductsDocs = await Product.find({}, '-reviews')
     .lean()
     .sort({
-      rating: -1,
+      category: 1,
     })
-    .limit(6);
+    .limit(52);
   await db.disconnect();
   return {
     props: {

@@ -5,7 +5,6 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Typography,
 } from '@material-ui/core';
 import React from 'react';
 import NextLink from 'next/link';
@@ -15,26 +14,34 @@ export default function ProductItem({ product, addToCartHandler }) {
   return (
     <Card>
       <NextLink href={`/product/${product.slug}`} passHref>
-        <CardActionArea>
+        <CardActionArea style={{ maxHeight: '400px', minHeight: '400px' }}>
           <CardMedia
             component="img"
             image={product.image}
             title={product.name}
           ></CardMedia>
           <CardContent>
-            <Typography>{product.name}</Typography>
+            <h3>{product.name}</h3>
             <Rating value={product.rating} readOnly></Rating>
           </CardContent>
         </CardActionArea>
       </NextLink>
-      <CardActions>
-        <Typography>${product.price}</Typography>
+      <CardActions
+        style={{ marginLeft: '10px', justifyContent: 'space-evenly' }}
+      >
+        <h3 style={{ textDecoration: 'line-through' }}>
+          {' '}
+          {product.price * 1.3},000Đ
+        </h3>
+        <h3 style={{ color: 'red' }}>{product.price},000Đ</h3>
+      </CardActions>
+      <CardActions style={{ marginLeft: '45px' }}>
         <Button
+          style={{ background: '#f0c14b' }}
           size="small"
-          color="primary"
           onClick={() => addToCartHandler(product)}
         >
-          Add to cart
+          Thêm vào giỏ
         </Button>
       </CardActions>
     </Card>

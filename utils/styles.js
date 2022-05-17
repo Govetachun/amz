@@ -2,21 +2,26 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   navbar: {
-    backgroundColor: '#203040',
+    background:
+      'linear-gradient(to right,rgba(251,231,233), rgba(231,207,238), rgba(251,231,233),rgba(251,231,233) ,rgba(251,231,233),rgba(231,207,238))',
     '& a': {
-      color: '#ffffff',
+      color: 'rgba(60, 51, 79, 1)',
       marginLeft: 10,
     },
   },
+  bg: {
+    background: 'linear-gradient(rgba(245,221,245,0.3), rgba(243,190,169,0.3))',
+  },
   brand: {
-    fontWeight: 'bold',
-    fontSize: '1.5rem',
+    width: '70%',
+    paddingTop: 10,
   },
   grow: {
     flexGrow: 1,
   },
   main: {
     minHeight: '80vh',
+    marginBottom: 50,
   },
   footer: {
     marginTop: 10,
@@ -32,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
   },
   navbarButton: {
-    color: '#ffffff',
+    color: 'rgba(60, 51, 79, 1)',
     textTransform: 'initial',
   },
   transparentBackgroud: {
@@ -48,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 800,
     width: '100%',
   },
+
   reviewItem: {
     marginRight: '1rem',
     borderRight: '1px #808080 solid',
@@ -60,29 +66,42 @@ const useStyles = makeStyles((theme) => ({
   mt1: { marginTop: '1rem' },
   // search
   searchSection: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
+    // display: 'none',
+    [theme.breakpoints.up('xs')]: {
       display: 'flex',
     },
+    display: 'flex',
+
+    alignItems: 'center',
+    width: '150%',
   },
   searchForm: {
-    border: '1px solid #ffffff',
+    border: '1px solid rgba(60, 51, 79, 1)',
     backgroundColor: '#ffffff',
-    borderRadius: 5,
+    borderRadius: 8,
+    width: '100%',
+    [theme.breakpoints.down('xs')]: {
+      height: '30px',
+    },
   },
   searchInput: {
     paddingLeft: 5,
-    color: '#000000',
+    color: 'rgba(60, 51, 79, 1)',
     '& ::placeholder': {
-      color: '#606060',
+      color: 'rgba(60, 51, 79, 1)',
     },
   },
   iconButton: {
-    backgroundColor: '#f8c040',
+    backgroundColor: 'rgba(60, 51, 79, 1)',
     padding: 5,
+    float: 'right',
     borderRadius: '0 5px 5px 0',
     '& span': {
-      color: '#000000',
+      color: '#ffffff',
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '30px',
+      display: 'none',
     },
   },
   sort: {

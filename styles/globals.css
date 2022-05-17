@@ -2,10 +2,16 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Bold;
 }
-
+@font-face {
+  font-family: Medium;
+  src: url(./font/SVN-Gilroy\ Medium.otf);
+}
+@font-face {
+  font-family: Bold;
+  src: url(./font/SVN-Gilroy\ Bold.otf);
+}
 a {
   color: inherit;
   text-decoration: none;

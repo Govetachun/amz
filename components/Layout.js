@@ -4,7 +4,6 @@ import {
   createTheme,
   CssBaseline,
   Link,
-  Switch,
   ThemeProvider,
   Toolbar,
   Typography,
@@ -34,6 +33,11 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 import axios from 'axios';
+import logo from '../utils/img/logo.png';
+import Image from 'next/image';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import Footer from './Footer';
+
 function Layout({ title, description, children }) {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
@@ -54,10 +58,10 @@ function Layout({ title, description, children }) {
     palette: {
       type: darkMode ? 'dark' : 'light',
       primary: {
-        main: '#f0c000',
+        main: 'rgba(60, 51, 79, 1)',
       },
       secondary: {
-        main: '#208080',
+        main: '#f0c14b',
       },
     },
   });
@@ -91,11 +95,7 @@ function Layout({ title, description, children }) {
   useEffect(() => {
     fetchCategories();
   }, []);
-  const darkModeChangeHandler = () => {
-    dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' });
-    const newDarkMode = !darkMode;
-    Cookies.set('darkMode', newDarkMode ? 'ON' : 'OFF');
-  };
+
   const [anchorEl, setAnchorEl] = useState(null);
   const loginClickHandler = (e) => {
     setAnchorEl(e.currentTarget);
@@ -114,9 +114,9 @@ function Layout({ title, description, children }) {
     router.push('/');
   };
   return (
-    <div>
+    <div className={classes.bg}>
       <Head>
-        <title>{title ? `${title} - Next Amazona` : 'Next Amazon'}</title>
+        <title>{title ? `${title} - FORIA` : 'FORIA'}</title>
         {description && <meta name="description" content={description}></meta>}
       </Head>
       <ThemeProvider theme={theme}>
@@ -133,8 +133,8 @@ function Layout({ title, description, children }) {
                 <MenuIcon className={classes.navbarButton}></MenuIcon>
               </IconButton>
               <NextLink href="/" passHref>
-                <Link>
-                  <Typography className={classes.brand}>amazona</Typography>
+                <Link className={classes.brand}>
+                  <Image alt="logo" src={logo} />
                 </Link>
               </NextLink>
             </Box>
@@ -171,7 +171,11 @@ function Layout({ title, description, children }) {
               </List>
             </Drawer>
             <div className={classes.searchSection}>
-              <form onSubmit={submitHandler} className={classes.searchForm}>
+              <form
+                onSubmit={submitHandler}
+                className={classes.searchForm}
+                style={{ marginTop: '10px', marginBottom: '10px' }}
+              >
                 <InputBase
                   name="query"
                   className={classes.searchInput}
@@ -187,27 +191,32 @@ function Layout({ title, description, children }) {
                 </IconButton>
               </form>
             </div>
-            <div>
-              <Switch
-                checked={darkMode}
-                onChange={darkModeChangeHandler}
-              ></Switch>
+            <div style={{ display: 'flex' }}>
               <NextLink href="/cart" passHref>
                 <Link>
-                  <Typography component="span">
-                    {cart.cartItems.length > 0 ? (
-                      <Badge
-                        color="secondary"
-                        badgeContent={cart.cartItems.length}
-                      >
-                        Cart
-                      </Badge>
-                    ) : (
-                      'Cart'
-                    )}
-                  </Typography>
+                  <h3
+                    style={{
+                      marginLeft: '45px',
+                      marginRight: '30px',
+                      marginTop: '0',
+                      marginBottom: '0',
+                    }}
+                  >
+                    Cart
+                  </h3>
+                  {cart.cartItems.length > 0 ? (
+                    <Badge
+                      color="secondary"
+                      badgeContent={cart.cartItems.length}
+                    >
+                      <ShoppingBasketIcon style={{ marginLeft: 50 }} />
+                    </Badge>
+                  ) : (
+                    <ShoppingBasketIcon style={{ marginLeft: 50 }} />
+                  )}
                 </Link>
               </NextLink>
+
               {userInfo ? (
                 <>
                   <Button
@@ -216,6 +225,7 @@ function Layout({ title, description, children }) {
                     onClick={loginClickHandler}
                     className={classes.navbarButton}
                   >
+                    <h4 style={{ margin: '0' }}>Hello</h4>
                     {userInfo.name}
                   </Button>
                   <Menu
@@ -252,18 +262,33 @@ function Layout({ title, description, children }) {
               ) : (
                 <NextLink href="/login" passHref>
                   <Link>
-                    <Typography component="span">Login</Typography>
+                    <Typography component="span">
+                      <h4 style={{ margin: '0', marginRight: 30 }}>Hello</h4>
+                      <h4 style={{ margin: '0' }}>Login</h4>
+                    </Typography>
                   </Link>
                 </NextLink>
               )}
             </div>
+            <NextLink href="/login" passHref>
+              <Link>
+                <Typography
+                  component="span"
+                  style={{ justifyContent: 'center', paddingRight: '10px' }}
+                >
+                  <h4 style={{ margin: '0', marginTop: '20px' }}>Trả</h4>
+                  <h4 style={{ margin: '0' }}>Đặt</h4>
+                </Typography>
+              </Link>
+            </NextLink>
           </Toolbar>
         </AppBar>
+
         <Container className={classes.main}>{children}</Container>
-        <footer className={classes.footer}>
-          <Typography>All right reserved</Typography>
-        </footer>
       </ThemeProvider>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
