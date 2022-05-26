@@ -31,9 +31,9 @@ export default function ProductItem({ product, addToCartHandler }) {
       >
         <h3 style={{ textDecoration: 'line-through' }}>
           {' '}
-          {product.price * 1.3},000Đ
+          {product.price * 1.3}.000Đ
         </h3>
-        <h3 style={{ color: 'red' }}>{product.price},000Đ</h3>
+        <h3 style={{ color: 'red' }}>{product.price}.000Đ</h3>
       </CardActions>
       <CardActions style={{ marginLeft: '45px' }}>
         <Button

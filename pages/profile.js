@@ -61,7 +61,7 @@ function Profile() {
       );
       dispatch({ type: 'USER_LOGIN', payload: data });
       Cookies.set('userInfo', data);
-      enqueueSnackbar('Profile updated successfully', { variant: 'success' });
+      enqueueSnackbar('Profile cập nhật thành công', { variant: 'success' });
     } catch (err) {
       enqueueSnackbar(getError(err), { variant: 'error' });
     }
@@ -79,7 +79,7 @@ function Profile() {
               </NextLink>
               <NextLink href="/order-history" passHref>
                 <ListItem button component="a">
-                  <ListItemText primary="Order History"></ListItemText>
+                  <ListItemText primary="Lịch sử đặt hàng"></ListItemText>
                 </ListItem>
               </NextLink>
             </List>
@@ -119,8 +119,8 @@ function Profile() {
                             helperText={
                               errors.name
                                 ? errors.name.type === 'minLength'
-                                  ? 'Name length is more than 1'
-                                  : 'Name is required'
+                                  ? 'Độ dài tên phải lớn hơn 1'
+                                  : 'Mời nhập tên'
                                 : ''
                             }
                             {...field}
@@ -148,8 +148,8 @@ function Profile() {
                             helperText={
                               errors.email
                                 ? errors.email.type === 'pattern'
-                                  ? 'Email is not valid'
-                                  : 'Email is required'
+                                  ? 'Email không hợp lệ'
+                                  : 'Mời nhập Email'
                                 : ''
                             }
                             {...field}
@@ -166,7 +166,7 @@ function Profile() {
                           validate: (value) =>
                             value === '' ||
                             value.length > 5 ||
-                            'Password length is more than 5',
+                            'Độ dài password phải lớn hơn 5',
                         }}
                         render={({ field }) => (
                           <TextField
@@ -178,7 +178,7 @@ function Profile() {
                             error={Boolean(errors.password)}
                             helperText={
                               errors.password
-                                ? 'Password length is more than 5'
+                                ? 'Độ dài password phải lớn hơn 5'
                                 : ''
                             }
                             {...field}
@@ -195,7 +195,7 @@ function Profile() {
                           validate: (value) =>
                             value === '' ||
                             value.length > 5 ||
-                            'Confirm Password length is more than 5',
+                            'Xác nhận mật khẩu phải lớn hơn 5',
                         }}
                         render={({ field }) => (
                           <TextField
@@ -207,7 +207,7 @@ function Profile() {
                             error={Boolean(errors.confirmPassword)}
                             helperText={
                               errors.password
-                                ? 'Confirm Password length is more than 5'
+                                ? 'Xác nhận mật khẩu phải lớn hơn 5'
                                 : ''
                             }
                             {...field}
@@ -222,7 +222,7 @@ function Profile() {
                         fullWidth
                         color="primary"
                       >
-                        Update
+                        Cập nhật
                       </Button>
                     </ListItem>
                   </List>

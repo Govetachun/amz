@@ -29,10 +29,10 @@ handler.put(async (req, res) => {
     product.description = req.body.description;
     await product.save();
     await db.disconnect();
-    res.send({ message: 'Product Updated Successfully' });
+    res.send({ message: 'Sản phẩm được cập nhật thành công' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product Not Found' });
+    res.status(404).send({ message: 'Không tìm thấy sản phẩm' });
   }
 });
 
@@ -42,10 +42,10 @@ handler.delete(async (req, res) => {
   if (product) {
     await product.remove();
     await db.disconnect();
-    res.send({ message: 'Product Deleted' });
+    res.send({ message: 'Sản phẩm đã được xóa' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product Not Found' });
+    res.status(404).send({ message: 'Không tìm thấy sản phẩm' });
   }
 });
 

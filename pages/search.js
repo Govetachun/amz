@@ -147,7 +147,7 @@ export default function Search(props) {
             </ListItem>
             <ListItem>
               <Box className={classes.fullWidth}>
-                <Typography>Prices</Typography>
+                <Typography>Giá</Typography>
                 <Select value={price} onChange={priceHandler} fullWidth>
                   <MenuItem value="all">All</MenuItem>
                   {prices.map((price) => (
@@ -160,13 +160,13 @@ export default function Search(props) {
             </ListItem>
             <ListItem>
               <Box className={classes.fullWidth}>
-                <Typography>Ratings</Typography>
+                <Typography>Đánh giá</Typography>
                 <Select value={rating} onChange={ratingHandler} fullWidth>
                   <MenuItem value="all">All</MenuItem>
                   {ratings.map((rating) => (
                     <MenuItem dispaly="flex" key={rating} value={rating}>
                       <Rating value={rating} readOnly />
-                      <Typography component="span">&amp; Up</Typography>
+                      <Typography component="span">&amp; Lên</Typography>
                     </MenuItem>
                   ))}
                 </Select>
@@ -195,14 +195,14 @@ export default function Search(props) {
             </Grid>
             <Grid item>
               <Typography component="span" className={classes.sort}>
-                Sort by
+                tìm kiếm theo
               </Typography>
               <Select value={sort} onChange={sortHandler}>
-                <MenuItem value="featured">Featured</MenuItem>
-                <MenuItem value="lowest">Price: Low to High</MenuItem>
-                <MenuItem value="highest">Price: High to Low</MenuItem>
-                <MenuItem value="toprated">Customer Reviews</MenuItem>
-                <MenuItem value="newest">Newest Arrivals</MenuItem>
+                <MenuItem value="featured">Loại</MenuItem>
+                <MenuItem value="lowest">Giá: thấp đến cao</MenuItem>
+                <MenuItem value="highest">Giá: cao đến thấp</MenuItem>
+                <MenuItem value="toprated">Đánh giá khách hàng</MenuItem>
+                <MenuItem value="newest">Mới nhất</MenuItem>
               </Select>
             </Grid>
           </Grid>

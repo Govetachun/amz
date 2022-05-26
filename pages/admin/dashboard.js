@@ -123,14 +123,14 @@ function AdminDashboard() {
                       <Card raised>
                         <CardContent>
                           <Typography variant="h1">
-                            ${summary.ordersPrice}
+                            {summary.ordersPrice}.000Đ
                           </Typography>
                           <Typography>Sales</Typography>
                         </CardContent>
                         <CardActions>
                           <NextLink href="/admin/orders" passHref>
                             <Button size="small" color="primary">
-                              View sales
+                              Xem sales
                             </Button>
                           </NextLink>
                         </CardActions>
@@ -142,12 +142,12 @@ function AdminDashboard() {
                           <Typography variant="h1">
                             {summary.ordersCount}
                           </Typography>
-                          <Typography>Orders</Typography>
+                          <Typography>Đơn hàng</Typography>
                         </CardContent>
                         <CardActions>
                           <NextLink href="/admin/orders" passHref>
                             <Button size="small" color="primary">
-                              View orders
+                              Xem đơn hàng
                             </Button>
                           </NextLink>
                         </CardActions>
@@ -159,12 +159,12 @@ function AdminDashboard() {
                           <Typography variant="h1">
                             {summary.productsCount}
                           </Typography>
-                          <Typography>Products</Typography>
+                          <Typography>Sản phẩm</Typography>
                         </CardContent>
                         <CardActions>
                           <NextLink href="/admin/products" passHref>
                             <Button size="small" color="primary">
-                              View products
+                              Xem sản phẩm
                             </Button>
                           </NextLink>
                         </CardActions>
@@ -181,7 +181,7 @@ function AdminDashboard() {
                         <CardActions>
                           <NextLink href="/admin/users" passHref>
                             <Button size="small" color="primary">
-                              View users
+                              Xem users
                             </Button>
                           </NextLink>
                         </CardActions>
@@ -192,7 +192,7 @@ function AdminDashboard() {
               </ListItem>
               <ListItem>
                 <Typography component="h1" variant="h1">
-                  Sales Chart
+                  Biểu đồ sales
                 </Typography>
               </ListItem>
               <ListItem>

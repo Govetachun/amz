@@ -14,10 +14,10 @@ handler.put(async (req, res) => {
 
     const deliveredOrder = await order.save();
     await db.disconnect();
-    res.send({ message: 'order delivered', order: deliveredOrder });
+    res.send({ message: 'Đơn hàng đã được vận chuyển', order: deliveredOrder });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'order not found' });
+    res.status(404).send({ message: 'Không tìm thấy đơn hàng' });
   }
 });
 

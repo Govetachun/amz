@@ -24,7 +24,7 @@ handler.put(async (req, res) => {
     res.send({ message: 'User Updated Successfully' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'User Not Found' });
+    res.status(404).send({ message: 'Không tìm thấy user' });
   }
 });
 
@@ -34,10 +34,10 @@ handler.delete(async (req, res) => {
   if (user) {
     await user.remove();
     await db.disconnect();
-    res.send({ message: 'User Deleted' });
+    res.send({ message: 'Đã xóa user' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'User Not Found' });
+    res.status(404).send({ message: 'Không tìm thấy user' });
   }
 });
 

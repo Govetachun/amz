@@ -72,14 +72,14 @@ export default function ProductScreen(props) {
   }, []);
 
   if (!product) {
-    return <div>Product Not Found</div>;
+    return <div>Không tìm thấy sản phẩm</div>;
   }
   const addToCartHandler = async () => {
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
     if (data.countInStock < quantity) {
-      window.alert('Sorry. Product is out of stock');
+      window.alert('Xin lỗi. Sản phẩm đã hết hàng');
       return;
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
@@ -91,7 +91,7 @@ export default function ProductScreen(props) {
       <div className={classes.section}>
         <NextLink href="/" passHref>
           <Link>
-            <Typography>back to products</Typography>
+            <Typography>Quay về sản phẩm</Typography>
           </Link>
         </NextLink>
       </div>
@@ -113,19 +113,19 @@ export default function ProductScreen(props) {
               </Typography>
             </ListItem>
             <ListItem>
-              <Typography>Category: {product.category}</Typography>
+              <Typography>Thể loại: {product.category}</Typography>
             </ListItem>
             <ListItem>
-              <Typography>Brand: {product.brand}</Typography>
+              <Typography>Tên thương hiệu: {product.brand}</Typography>
             </ListItem>
             <ListItem>
               <Rating value={product.rating} readOnly></Rating>
               <Link href="#reviews">
-                <Typography>({product.numReviews} reviews)</Typography>
+                <Typography>({product.numReviews} đánh giá)</Typography>
               </Link>
             </ListItem>
             <ListItem>
-              <Typography> Description: {product.description}</Typography>
+              <Typography> Mô tả: {product.description}</Typography>
             </ListItem>
           </List>
         </Grid>
@@ -135,21 +135,21 @@ export default function ProductScreen(props) {
               <ListItem>
                 <Grid container>
                   <Grid item xs={6}>
-                    <Typography>Price</Typography>
+                    <Typography>Giá</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography>${product.price}</Typography>
+                    <Typography>{product.price}.000Đ</Typography>
                   </Grid>
                 </Grid>
               </ListItem>
               <ListItem>
                 <Grid container>
                   <Grid item xs={6}>
-                    <Typography>Status</Typography>
+                    <Typography>Tình trạng</Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Typography>
-                      {product.countInStock > 0 ? 'In stock' : 'Unavailable'}
+                      {product.countInStock > 0 ? 'Còn hàng' : 'Không hợp lệ'}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -161,7 +161,7 @@ export default function ProductScreen(props) {
                   color="primary"
                   onClick={addToCartHandler}
                 >
-                  Add to cart
+                  thêm vào giỏ hàng
                 </Button>
               </ListItem>
             </List>
@@ -171,7 +171,7 @@ export default function ProductScreen(props) {
       <List>
         <ListItem>
           <Typography name="reviews" id="reviews" variant="h2">
-            Customer Reviews
+            Đánh giá khách hàng
           </Typography>
         </ListItem>
         {reviews.length === 0 && <ListItem>No review</ListItem>}
@@ -196,7 +196,7 @@ export default function ProductScreen(props) {
             <form onSubmit={submitHandler} className={classes.reviewForm}>
               <List>
                 <ListItem>
-                  <Typography variant="h2">Leave your review</Typography>
+                  <Typography variant="h2">Để lại bình luận</Typography>
                 </ListItem>
                 <ListItem>
                   <TextField
@@ -223,7 +223,7 @@ export default function ProductScreen(props) {
                     variant="contained"
                     color="primary"
                   >
-                    Submit
+                    Gửi đánh giá
                   </Button>
 
                   {loading && <CircularProgress></CircularProgress>}
@@ -232,11 +232,14 @@ export default function ProductScreen(props) {
             </form>
           ) : (
             <Typography variant="h2">
-              Please{' '}
-              <Link href={`/login?redirect=/product/${product.slug}`}>
-                login
+              Xin hãy{' '}
+              <Link
+                href={`/login?redirect=/product/${product.slug}`}
+                color="secondary"
+              >
+                Đăng nhập
               </Link>{' '}
-              to write a review
+              Để viết đánh giá
             </Typography>
           )}
         </ListItem>

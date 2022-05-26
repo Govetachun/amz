@@ -53,7 +53,7 @@ function Login() {
     <Layout title="Login">
       <form onSubmit={handleSubmit(submitHandler)} className={classes.form}>
         <Typography component="h1" variant="h1">
-          Login
+          Đăng nhập
         </Typography>
         <List>
           <ListItem>
@@ -76,8 +76,8 @@ function Login() {
                   helperText={
                     errors.email
                       ? errors.email.type === 'pattern'
-                        ? 'Email is not valid'
-                        : 'Email is required'
+                        ? 'Email không hợp lệ'
+                        : 'Yêu cầu Email'
                       : ''
                   }
                   {...field}
@@ -105,8 +105,8 @@ function Login() {
                   helperText={
                     errors.password
                       ? errors.password.type === 'minLength'
-                        ? 'Password length is more than 5'
-                        : 'Password is required'
+                        ? 'Password phải dài hơn 5'
+                        : 'Yêu cầu password'
                       : ''
                   }
                   {...field}
@@ -116,13 +116,13 @@ function Login() {
           </ListItem>
           <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">
-              Login
+              Đăng nhập
             </Button>
           </ListItem>
           <ListItem>
-            DOnt have an account? &nbsp;
+            Chưa có tài khoản? &nbsp;
             <NextLink href={`/register?redirect=${redirect || '/'}`} passHref>
-              <Link>Register</Link>
+              <Link>Đăng kí</Link>
             </NextLink>
           </ListItem>
         </List>

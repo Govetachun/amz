@@ -94,7 +94,7 @@ function PlaceOrder() {
             <List>
               <ListItem>
                 <Typography component="h2" variant="h2">
-                  Shipping Address
+                  Địa chỉ đặt hàng
                 </Typography>
               </ListItem>
               <ListItem>
@@ -108,7 +108,7 @@ function PlaceOrder() {
             <List>
               <ListItem>
                 <Typography component="h2" variant="h2">
-                  Payment Method
+                  Phương thức thanh toán
                 </Typography>
               </ListItem>
               <ListItem>{paymentMethod}</ListItem>
@@ -118,7 +118,7 @@ function PlaceOrder() {
             <List>
               <ListItem>
                 <Typography component="h2" variant="h2">
-                  Orders Items
+                  Đơn hàng
                 </Typography>
               </ListItem>
               <ListItem>
@@ -126,10 +126,10 @@ function PlaceOrder() {
                   <Table>
                     <TableHead>
                       <TableRow>
-                        <TableCell>image</TableCell>
-                        <TableCell>name</TableCell>
-                        <TableCell align="right">Quantity</TableCell>
-                        <TableCell align="right">Price</TableCell>
+                        <TableCell>Ảnh</TableCell>
+                        <TableCell>Tên</TableCell>
+                        <TableCell align="right">Số lượng</TableCell>
+                        <TableCell align="right">Giá</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -159,7 +159,7 @@ function PlaceOrder() {
                             <Typography>{item.quantity}</Typography>
                           </TableCell>
                           <TableCell align="right">
-                            <Typography>${item.price}</Typography>
+                            <Typography>{item.price}.000Đ</Typography>
                           </TableCell>
                         </TableRow>
                       ))}
@@ -174,15 +174,15 @@ function PlaceOrder() {
           <Card className={classes.section}>
             <List>
               <ListItem>
-                <Typography variant="h2">Order Summary</Typography>
+                <Typography variant="h2">Tóm tắt đơn hàng</Typography>
               </ListItem>
               <ListItem>
                 <Grid container>
                   <Grid item xs={6}>
-                    <Typography> Items: </Typography>
+                    <Typography> Sản phẩm: </Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography align="right"> ${itemsPrice}</Typography>
+                    <Typography align="right"> {itemsPrice}.000Đ</Typography>
                   </Grid>
                 </Grid>
               </ListItem>
@@ -192,17 +192,17 @@ function PlaceOrder() {
                     <Typography> Tax: </Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography align="right"> ${taxPrice}</Typography>
+                    <Typography align="right"> {taxPrice}.000Đ</Typography>
                   </Grid>
                 </Grid>
               </ListItem>
               <ListItem>
                 <Grid container>
                   <Grid item xs={6}>
-                    <Typography> Shipping: </Typography>
+                    <Typography> Giao hàng: </Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Typography align="right"> ${shippingPrice}</Typography>
+                    <Typography align="right"> {shippingPrice},000Đ</Typography>
                   </Grid>
                 </Grid>
               </ListItem>
@@ -210,12 +210,12 @@ function PlaceOrder() {
                 <Grid container>
                   <Grid item xs={6}>
                     <Typography>
-                      <strong>Total:</strong>
+                      <strong>Tổng:</strong>
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Typography align="right">
-                      <strong> ${totalPrice}</strong>
+                      <strong> {totalPrice}.000Đ</strong>
                     </Typography>
                   </Grid>
                 </Grid>
@@ -227,7 +227,7 @@ function PlaceOrder() {
                   color="primary"
                   fullWidth
                 >
-                  Place Order
+                  Nơi đặt hàng
                 </Button>
               </ListItem>
               {loading && (

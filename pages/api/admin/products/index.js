@@ -30,7 +30,7 @@ handler.post(async (req, res) => {
 
   const product = await newProduct.save();
   await db.disconnect();
-  res.send({ message: 'Product Created', product });
+  res.send({ message: 'Sản phẩm đã được tạo', product });
 });
 
 export default handler;

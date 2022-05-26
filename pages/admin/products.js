@@ -91,7 +91,7 @@ function AdminProducts() {
 
   const { enqueueSnackbar } = useSnackbar();
   const createHandler = async () => {
-    if (!window.confirm('Are you sure?')) {
+    if (!window.confirm('Bạn chắc chắn chưa?')) {
       return;
     }
     try {
@@ -104,7 +104,9 @@ function AdminProducts() {
         }
       );
       dispatch({ type: 'CREATE_SUCCESS' });
-      enqueueSnackbar('Product created successfully', { variant: 'success' });
+      enqueueSnackbar('Sản phẩm được cập nhật thành công', {
+        variant: 'success',
+      });
       router.push(`/admin/product/${data.product._id}`);
     } catch (err) {
       dispatch({ type: 'CREATE_FAIL' });
@@ -112,7 +114,7 @@ function AdminProducts() {
     }
   };
   const deleteHandler = async (productId) => {
-    if (!window.confirm('Are you sure?')) {
+    if (!window.confirm('Bạn chắc chắn chưa?')) {
       return;
     }
     try {
@@ -121,7 +123,7 @@ function AdminProducts() {
         headers: { authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: 'DELETE_SUCCESS' });
-      enqueueSnackbar('Product deleted successfully', { variant: 'success' });
+      enqueueSnackbar('Sản phẩm được xóa thành công', { variant: 'success' });
     } catch (err) {
       dispatch({ type: 'DELETE_FAIL' });
       enqueueSnackbar(getError(err), { variant: 'error' });
@@ -163,7 +165,7 @@ function AdminProducts() {
                 <Grid container alignItems="center">
                   <Grid item xs={6}>
                     <Typography component="h1" variant="h1">
-                      Products
+                      Sản phẩm
                     </Typography>
                     {loadingDelete && <CircularProgress />}
                   </Grid>
@@ -173,7 +175,7 @@ function AdminProducts() {
                       color="primary"
                       variant="contained"
                     >
-                      Create
+                      Tạo
                     </Button>
                     {loadingCreate && <CircularProgress />}
                   </Grid>
@@ -191,12 +193,12 @@ function AdminProducts() {
                       <TableHead>
                         <TableRow>
                           <TableCell>ID</TableCell>
-                          <TableCell>NAME</TableCell>
-                          <TableCell>PRICE</TableCell>
-                          <TableCell>CATEGORY</TableCell>
-                          <TableCell>COUNT</TableCell>
-                          <TableCell>RATING</TableCell>
-                          <TableCell>ACTIONS</TableCell>
+                          <TableCell>TÊN</TableCell>
+                          <TableCell>GIÁ</TableCell>
+                          <TableCell>THỂ LOẠI</TableCell>
+                          <TableCell>SỐ LƯỢNG</TableCell>
+                          <TableCell>ĐÁNH GIÁ</TableCell>
+                          <TableCell>HÀNH ĐỘNG</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -206,7 +208,7 @@ function AdminProducts() {
                               {product._id.substring(20, 24)}
                             </TableCell>
                             <TableCell>{product.name}</TableCell>
-                            <TableCell>${product.price}</TableCell>
+                            <TableCell>{product.price}.000Đ</TableCell>
                             <TableCell>{product.category}</TableCell>
                             <TableCell>{product.countInStock}</TableCell>
                             <TableCell>{product.rating}</TableCell>
@@ -216,7 +218,7 @@ function AdminProducts() {
                                 passHref
                               >
                                 <Button size="small" variant="contained">
-                                  Edit
+                                  Chỉnh sửa
                                 </Button>
                               </NextLink>{' '}
                               <Button
@@ -224,7 +226,7 @@ function AdminProducts() {
                                 size="small"
                                 variant="contained"
                               >
-                                Delete
+                                Xóa
                               </Button>
                             </TableCell>
                           </TableRow>

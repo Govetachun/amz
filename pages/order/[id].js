@@ -191,7 +191,7 @@ function Order({ params }) {
   return (
     <Layout title={`Order ${orderId}`}>
       <Typography component="h1" variant="h1">
-        Order {orderId}
+        Mã đặt hàng {orderId}
       </Typography>
       {loading ? (
         <CircularProgress />
@@ -204,7 +204,7 @@ function Order({ params }) {
               <List>
                 <ListItem>
                   <Typography component="h2" variant="h2">
-                    Shipping Address
+                    Địa chỉ giao hàng
                   </Typography>
                 </ListItem>
                 <ListItem>
@@ -224,12 +224,13 @@ function Order({ params }) {
               <List>
                 <ListItem>
                   <Typography component="h2" variant="h2">
-                    Payment Method
+                    Phương thức thanh toán
                   </Typography>
                 </ListItem>
                 <ListItem>{paymentMethod}</ListItem>
                 <ListItem>
-                  Status: {isPaid ? `paid at ${paidAt}` : 'not paid'}
+                  Tình trạng:{' '}
+                  {isPaid ? `Thanh toán lúc ${paidAt}` : 'chưa thanh toán'}
                 </ListItem>
               </List>
             </Card>
@@ -237,7 +238,7 @@ function Order({ params }) {
               <List>
                 <ListItem>
                   <Typography component="h2" variant="h2">
-                    Orders Items
+                    Đơn hàng của bạn
                   </Typography>
                 </ListItem>
                 <ListItem>
@@ -245,10 +246,10 @@ function Order({ params }) {
                     <Table>
                       <TableHead>
                         <TableRow>
-                          <TableCell>image</TableCell>
-                          <TableCell>name</TableCell>
-                          <TableCell align="right">Quantity</TableCell>
-                          <TableCell align="right">Price</TableCell>
+                          <TableCell>Ảnh</TableCell>
+                          <TableCell>Tên</TableCell>
+                          <TableCell align="right">Số lượng</TableCell>
+                          <TableCell align="right">Giá</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -278,7 +279,7 @@ function Order({ params }) {
                               <Typography>{item.quantity}</Typography>
                             </TableCell>
                             <TableCell align="right">
-                              <Typography>${item.price}</Typography>
+                              <Typography>{item.price}.000Đ</Typography>
                             </TableCell>
                           </TableRow>
                         ))}
@@ -293,7 +294,7 @@ function Order({ params }) {
             <Card className={classes.section}>
               <List>
                 <ListItem>
-                  <Typography variant="h2">Order Summary</Typography>
+                  <Typography variant="h2">Tóm tắt đơn hàng</Typography>
                 </ListItem>
                 <ListItem>
                   <Grid container>
@@ -301,7 +302,7 @@ function Order({ params }) {
                       <Typography> Items: </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography align="right"> ${itemsPrice}</Typography>
+                      <Typography align="right"> {itemsPrice}.000Đ</Typography>
                     </Grid>
                   </Grid>
                 </ListItem>
@@ -311,17 +312,20 @@ function Order({ params }) {
                       <Typography> Tax: </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography align="right"> ${taxPrice}</Typography>
+                      <Typography align="right"> {taxPrice}.000Đ</Typography>
                     </Grid>
                   </Grid>
                 </ListItem>
                 <ListItem>
                   <Grid container>
                     <Grid item xs={6}>
-                      <Typography> Shipping: </Typography>
+                      <Typography> Giao hàng: </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography align="right"> ${shippingPrice}</Typography>
+                      <Typography align="right">
+                        {' '}
+                        {shippingPrice}.000Đ
+                      </Typography>
                     </Grid>
                   </Grid>
                 </ListItem>
@@ -329,12 +333,12 @@ function Order({ params }) {
                   <Grid container>
                     <Grid item xs={6}>
                       <Typography>
-                        <strong>Total:</strong>
+                        <strong>Tổng:</strong>
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <Typography align="right">
-                        <strong> ${totalPrice}</strong>
+                        <strong> {totalPrice}.000Đ</strong>
                       </Typography>
                     </Grid>
                   </Grid>
@@ -363,7 +367,7 @@ function Order({ params }) {
                       color="primary"
                       onClick={deliveredOrderHandler}
                     >
-                      Deliver Order
+                      Đơn vận chuyển
                     </Button>
                   </ListItem>
                 )}

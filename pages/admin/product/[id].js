@@ -114,7 +114,7 @@ function ProductEdit({ params }) {
       });
       dispatch({ type: 'UPLOAD_SUCCESS' });
       setValue(imageField, data.secure_url);
-      enqueueSnackbar('File uploaded successfully', { variant: 'success' });
+      enqueueSnackbar('File được đăng thành công', { variant: 'success' });
     } catch (err) {
       dispatch({ type: 'UPLOAD_FAIL', payload: getError(err) });
       enqueueSnackbar(getError(err), { variant: 'error' });
@@ -152,7 +152,9 @@ function ProductEdit({ params }) {
         { headers: { authorization: `Bearer ${userInfo.token}` } }
       );
       dispatch({ type: 'UPDATE_SUCCESS' });
-      enqueueSnackbar('Product updated successfully', { variant: 'success' });
+      enqueueSnackbar('Sản phẩm được cập nhật thành công', {
+        variant: 'success',
+      });
       router.push('/admin/products');
     } catch (err) {
       dispatch({ type: 'UPDATE_FAIL', payload: getError(err) });
@@ -163,7 +165,7 @@ function ProductEdit({ params }) {
   const [isFeatured, setIsFeatured] = useState(false);
 
   return (
-    <Layout title={`Edit Product ${productId}`}>
+    <Layout title={`Chỉnh sửa sản phẩm ${productId}`}>
       <Grid container spacing={1}>
         <Grid item md={3} xs={12}>
           <Card className={classes.section}>
@@ -196,7 +198,7 @@ function ProductEdit({ params }) {
             <List>
               <ListItem>
                 <Typography component="h1" variant="h1">
-                  Edit Product {productId}
+                  Chỉnh sửa sản phẩm {productId}
                 </Typography>
               </ListItem>
               <ListItem>
@@ -226,7 +228,7 @@ function ProductEdit({ params }) {
                             id="name"
                             label="Name"
                             error={Boolean(errors.name)}
-                            helperText={errors.name ? 'Name is required' : ''}
+                            helperText={errors.name ? 'Yêu cầu tên' : ''}
                             {...field}
                           ></TextField>
                         )}
@@ -268,7 +270,7 @@ function ProductEdit({ params }) {
                             id="price"
                             label="Price"
                             error={Boolean(errors.price)}
-                            helperText={errors.price ? 'Price is required' : ''}
+                            helperText={errors.price ? 'Yêu cầu giá' : ''}
                             {...field}
                           ></TextField>
                         )}
@@ -289,7 +291,7 @@ function ProductEdit({ params }) {
                             id="image"
                             label="Image"
                             error={Boolean(errors.image)}
-                            helperText={errors.image ? 'Image is required' : ''}
+                            helperText={errors.image ? 'Yêu cầu ảnh' : ''}
                             {...field}
                           ></TextField>
                         )}
@@ -363,9 +365,7 @@ function ProductEdit({ params }) {
                             id="category"
                             label="Category"
                             error={Boolean(errors.category)}
-                            helperText={
-                              errors.category ? 'Category is required' : ''
-                            }
+                            helperText={errors.category ? 'Yêu cầu loại' : ''}
                             {...field}
                           ></TextField>
                         )}
@@ -386,7 +386,7 @@ function ProductEdit({ params }) {
                             id="brand"
                             label="Brand"
                             error={Boolean(errors.brand)}
-                            helperText={errors.brand ? 'Brand is required' : ''}
+                            helperText={errors.brand ? 'Yêu cầu brand' : ''}
                             {...field}
                           ></TextField>
                         )}
@@ -409,7 +409,7 @@ function ProductEdit({ params }) {
                             error={Boolean(errors.countInStock)}
                             helperText={
                               errors.countInStock
-                                ? 'Count in stock is required'
+                                ? 'Yêu cầu số lượng trong shop'
                                 : ''
                             }
                             {...field}
@@ -434,9 +434,7 @@ function ProductEdit({ params }) {
                             label="Description"
                             error={Boolean(errors.description)}
                             helperText={
-                              errors.description
-                                ? 'Description is required'
-                                : ''
+                              errors.description ? 'Yêu cầu mô tả' : ''
                             }
                             {...field}
                           ></TextField>
@@ -451,7 +449,7 @@ function ProductEdit({ params }) {
                         fullWidth
                         color="primary"
                       >
-                        Update
+                        Cập nhật
                       </Button>
                       {loadingUpdate && <CircularProgress />}
                     </ListItem>

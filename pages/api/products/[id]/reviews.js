@@ -17,7 +17,7 @@ handler.get(async (req, res) => {
   if (product) {
     res.send(product.reviews);
   } else {
-    res.status(404).send({ message: 'Product not found' });
+    res.status(404).send({ message: 'Không tìm thấy sản phẩm' });
   }
 });
 
@@ -45,7 +45,7 @@ handler.use(isAuth).post(async (req, res) => {
       await updatedProduct.save();
 
       await db.disconnect();
-      return res.send({ message: 'Review updated' });
+      return res.send({ message: 'Đánh giá đã được cập nhật' });
     } else {
       const review = {
         user: mongoose.Types.ObjectId(req.user._id),
@@ -61,12 +61,12 @@ handler.use(isAuth).post(async (req, res) => {
       await product.save();
       await db.disconnect();
       res.status(201).send({
-        message: 'Review submitted',
+        message: 'Đánh giá đã được gửi',
       });
     }
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product Not Found' });
+    res.status(404).send({ message: 'Không tìm thấy sản phấm' });
   }
 });
 

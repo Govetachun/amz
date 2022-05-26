@@ -48,7 +48,7 @@ function Payment() {
       <CheckoutWizard activeStep={2}></CheckoutWizard>
       <form className={classes.form} onSubmit={submitHandler}>
         <Typography component="h1" variant="h1">
-          Payment Method
+          Phương thức thanh toán
         </Typography>
         <List>
           <ListItem>
@@ -65,7 +65,7 @@ function Payment() {
                   control={<Radio />}
                 ></FormControlLabel>
                 <FormControlLabel
-                  label="Stripe"
+                  label="Thanh toán khi nhận hàng"
                   value="Stripe"
                   control={<Radio />}
                 ></FormControlLabel>
@@ -79,7 +79,7 @@ function Payment() {
           </ListItem>
           <ListItem>
             <Button fullWidth type="submit" variant="contained" color="primary">
-              Continue
+              Tiếp tục
             </Button>
           </ListItem>
           <ListItem>
@@ -89,7 +89,7 @@ function Payment() {
               variant="contained"
               onClick={() => router.push('/shipping')}
             >
-              Back
+              Về trước
             </Button>
           </ListItem>
         </List>

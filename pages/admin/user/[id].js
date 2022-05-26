@@ -147,7 +147,7 @@ function UserEdit({ params }) {
             <List>
               <ListItem>
                 <Typography component="h1" variant="h1">
-                  Edit User {userId}
+                  Chỉnh sửa user {userId}
                 </Typography>
               </ListItem>
               <ListItem>
@@ -177,7 +177,7 @@ function UserEdit({ params }) {
                             id="name"
                             label="Name"
                             error={Boolean(errors.name)}
-                            helperText={errors.name ? 'Name is required' : ''}
+                            helperText={errors.name ? 'Yêu cầu tên' : ''}
                             {...field}
                           ></TextField>
                         )}

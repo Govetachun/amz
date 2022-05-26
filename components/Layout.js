@@ -150,7 +150,7 @@ function Layout({ title, description, children }) {
                     alignItems="center"
                     justifyContent="space-between"
                   >
-                    <Typography>Shopping by category</Typography>
+                    <Typography>Shopping theo loại</Typography>
                     <IconButton aria-label="close" onClick={sideCloseHandler}>
                       <CancelIcon />
                     </IconButton>
@@ -202,7 +202,7 @@ function Layout({ title, description, children }) {
                       marginBottom: '0',
                     }}
                   >
-                    Cart
+                    Giỏ
                   </h3>
                   {cart.cartItems.length > 0 ? (
                     <Badge
@@ -225,8 +225,8 @@ function Layout({ title, description, children }) {
                     onClick={loginClickHandler}
                     className={classes.navbarButton}
                   >
-                    <h4 style={{ margin: '0' }}>Hello</h4>
-                    {userInfo.name}
+                    <h4 style={{ margin: '0' }}>Chào </h4>
+                    <h5>{userInfo.name}</h5>
                   </Button>
                   <Menu
                     id="simple-menu"
@@ -245,7 +245,7 @@ function Layout({ title, description, children }) {
                         loginMenuCloseHandler(e, '/order-history')
                       }
                     >
-                      Order Hisotry
+                      Lịch sử đặt hàng
                     </MenuItem>
                     {userInfo.isAdmin && (
                       <MenuItem
@@ -256,15 +256,17 @@ function Layout({ title, description, children }) {
                         Admin Dashboard
                       </MenuItem>
                     )}
-                    <MenuItem onClick={logoutClickHandler}>Logout</MenuItem>
+                    <MenuItem onClick={logoutClickHandler}>Đăng xuất</MenuItem>
                   </Menu>
                 </>
               ) : (
                 <NextLink href="/login" passHref>
                   <Link>
                     <Typography component="span">
-                      <h4 style={{ margin: '0', marginRight: 30 }}>Hello</h4>
-                      <h4 style={{ margin: '0' }}>Login</h4>
+                      <h4 style={{ margin: '0', marginRight: 30 }}>
+                        Đăng nhập
+                      </h4>
+                      <h4 style={{ margin: '0' }}></h4>
                     </Typography>
                   </Link>
                 </NextLink>

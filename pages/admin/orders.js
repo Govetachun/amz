@@ -101,7 +101,7 @@ function AdminOrders() {
             <List>
               <ListItem>
                 <Typography component="h1" variant="h1">
-                  Orders
+                  Đơn hàng
                 </Typography>
               </ListItem>
               <ListItem>
@@ -116,11 +116,11 @@ function AdminOrders() {
                         <TableRow>
                           <TableCell>ID</TableCell>
                           <TableCell>USER</TableCell>
-                          <TableCell>DATE</TableCell>
-                          <TableCell>TOTAL</TableCell>
-                          <TableCell>PAID</TableCell>
-                          <TableCell>DELIVERED</TableCell>
-                          <TableCell>ACTION</TableCell>
+                          <TableCell>NGÀY</TableCell>
+                          <TableCell>TỔNG</TableCell>
+                          <TableCell>ĐÃ THANH TOÁN</TableCell>
+                          <TableCell>ĐÃ GIAO HÀNG</TableCell>
+                          <TableCell>HÀNH ĐỘNG</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -129,22 +129,22 @@ function AdminOrders() {
                             <TableCell>{order._id.substring(20, 24)}</TableCell>
                             <TableCell>{order.createdAt}</TableCell>
                             <TableCell>
-                              {order.user ? order.user.name : 'DELETED USER'}
+                              {order.user ? order.user.name : 'XÓA USER'}
                             </TableCell>
                             <TableCell>${order.totalPrice}</TableCell>
                             <TableCell>
                               {order.isPaid
-                                ? `paid at ${order.paidAt}`
-                                : 'not paid'}
+                                ? `đã thanh toán lúc ${order.paidAt}`
+                                : 'chưa thanh toán'}
                             </TableCell>
                             <TableCell>
                               {order.isDelivered
-                                ? `delivered at ${order.deliveredAt}`
-                                : 'not delivered'}
+                                ? `Đã giao hàng lúc ${order.deliveredAt}`
+                                : 'Chưa giao hàng'}
                             </TableCell>
                             <TableCell>
                               <NextLink href={`/order/${order._id}`}>
-                                <Button variant="contained">Details</Button>
+                                <Button variant="contained">Chi tiết</Button>
                               </NextLink>
                             </TableCell>
                           </TableRow>

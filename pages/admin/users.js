@@ -85,7 +85,7 @@ function AdminUsers() {
   const { enqueueSnackbar } = useSnackbar();
 
   const deleteHandler = async (userId) => {
-    if (!window.confirm('Are you sure?')) {
+    if (!window.confirm('Bạn chắc chắn chưa?')) {
       return;
     }
     try {
@@ -94,7 +94,7 @@ function AdminUsers() {
         headers: { authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: 'DELETE_SUCCESS' });
-      enqueueSnackbar('User deleted successfully', { variant: 'success' });
+      enqueueSnackbar('Người dùng đã được xóa', { variant: 'success' });
     } catch (err) {
       dispatch({ type: 'DELETE_FAIL' });
       enqueueSnackbar(getError(err), { variant: 'error' });
@@ -150,10 +150,10 @@ function AdminUsers() {
                       <TableHead>
                         <TableRow>
                           <TableCell>ID</TableCell>
-                          <TableCell>NAME</TableCell>
+                          <TableCell>TÊN</TableCell>
                           <TableCell>EMAIL</TableCell>
-                          <TableCell>ISADMIN</TableCell>
-                          <TableCell>ACTIONS</TableCell>
+                          <TableCell>LÀ ADIM</TableCell>
+                          <TableCell>HÀNH ĐỘNG</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -162,14 +162,16 @@ function AdminUsers() {
                             <TableCell>{user._id.substring(20, 24)}</TableCell>
                             <TableCell>{user.name}</TableCell>
                             <TableCell>{user.email}</TableCell>
-                            <TableCell>{user.isAdmin ? 'YES' : 'NO'}</TableCell>
+                            <TableCell>
+                              {user.isAdmin ? 'CÓ' : 'KHÔNG'}
+                            </TableCell>
                             <TableCell>
                               <NextLink
                                 href={`/admin/user/${user._id}`}
                                 passHref
                               >
                                 <Button size="small" variant="contained">
-                                  Edit
+                                  Chỉnh sửa
                                 </Button>
                               </NextLink>{' '}
                               <Button
@@ -177,7 +179,7 @@ function AdminUsers() {
                                 size="small"
                                 variant="contained"
                               >
-                                Delete
+                                Xóa
                               </Button>
                             </TableCell>
                           </TableRow>

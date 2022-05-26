@@ -76,7 +76,7 @@ function OrderHistory() {
               </NextLink>
               <NextLink href="/order-history" passHref>
                 <ListItem selected button component="a">
-                  <ListItemText primary="Order History"></ListItemText>
+                  <ListItemText primary="Lịch sử đặt hàng"></ListItemText>
                 </ListItem>
               </NextLink>
             </List>
@@ -87,7 +87,7 @@ function OrderHistory() {
             <List>
               <ListItem>
                 <Typography component="h1" variant="h1">
-                  Order History
+                  Lịch sử đặt hàng
                 </Typography>
               </ListItem>
               <ListItem>
@@ -101,11 +101,11 @@ function OrderHistory() {
                       <TableHead>
                         <TableRow>
                           <TableCell>ID</TableCell>
-                          <TableCell>DATE</TableCell>
-                          <TableCell>TOTAL</TableCell>
-                          <TableCell>PAID</TableCell>
-                          <TableCell>DELIVERED</TableCell>
-                          <TableCell>ACTION</TableCell>
+                          <TableCell>Ngày</TableCell>
+                          <TableCell>Tổng</TableCell>
+                          <TableCell>Đã thanh toán</TableCell>
+                          <TableCell>Đã giao hàng</TableCell>
+                          <TableCell>Hành động</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -113,22 +113,20 @@ function OrderHistory() {
                           <TableRow key={order._id}>
                             <TableCell>{order._id.substring(20, 24)}</TableCell>
                             <TableCell>{order.createdAt}</TableCell>
-                            <TableCell>${order.totalPrice}</TableCell>
+                            <TableCell>{order.totalPrice}.000Đ</TableCell>
                             <TableCell>
-                              $
                               {order.isPaid
-                                ? `paid at ${order.paidAt}`
-                                : 'not paid'}
+                                ? `đã thanh toán lúc ${order.paidAt}`
+                                : 'chưa thanh toán'}
                             </TableCell>
                             <TableCell>
-                              $
                               {order.isDelivered
-                                ? `delivered at ${order.deliveredAt}`
-                                : 'not delivered'}
+                                ? `đã vận chuyển lúc ${order.deliveredAt}`
+                                : 'chưa vận chuyển'}
                             </TableCell>
                             <TableCell>
                               <NextLink href={`/order/${order._id}`}>
-                                <Button variant="contained">Details</Button>
+                                <Button variant="contained">Chi tiết</Button>
                               </NextLink>
                             </TableCell>
                           </TableRow>

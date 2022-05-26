@@ -61,7 +61,7 @@ function Shipping() {
       <CheckoutWizard activeStep={1} />
       <form onSubmit={handleSubmit(submitHandler)} className={classes.form}>
         <Typography component="h1" variant="h1">
-          Shipping Address
+          Địa chỉ giao hàng
         </Typography>
         <List>
           <ListItem>
@@ -83,8 +83,8 @@ function Shipping() {
                   helperText={
                     errors.fullName
                       ? errors.fullName.type === 'minLength'
-                        ? 'Full Name length is more than 1'
-                        : 'Full Name is required'
+                        ? 'Độ dài tên phải lớn hơn 1'
+                        : 'Mời nhập tên'
                       : ''
                   }
                   {...field}
@@ -111,8 +111,8 @@ function Shipping() {
                   helperText={
                     errors.address
                       ? errors.address.type === 'minLength'
-                        ? 'Address length is more than 1'
-                        : 'Address is required'
+                        ? 'Độ dài địa chỉ phải lớn hơn 1'
+                        : 'Mời nhập địa chỉ'
                       : ''
                   }
                   {...field}
@@ -139,8 +139,8 @@ function Shipping() {
                   helperText={
                     errors.city
                       ? errors.city.type === 'minLength'
-                        ? 'City length is more than 1'
-                        : 'City is required'
+                        ? 'Độ dài thành phố phải lớn hơn 1'
+                        : 'Mời nhập thành phố'
                       : ''
                   }
                   {...field}
@@ -167,8 +167,8 @@ function Shipping() {
                   helperText={
                     errors.postalCode
                       ? errors.postalCode.type === 'minLength'
-                        ? 'Postal Code length is more than 1'
-                        : 'Postal Code is required'
+                        ? 'Độ dài mã bưu điện phải lớn hơn 1'
+                        : 'Mời dân mã bưu điện'
                       : ''
                   }
                   {...field}
@@ -195,8 +195,8 @@ function Shipping() {
                   helperText={
                     errors.country
                       ? errors.country.type === 'minLength'
-                        ? 'Country length is more than 1'
-                        : 'Country is required'
+                        ? 'Độ dài đất nước phải lớn hơn 1'
+                        : 'Mời nhập đất nước'
                       : ''
                   }
                   {...field}
@@ -207,7 +207,7 @@ function Shipping() {
 
           <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">
-              Continue
+              Tiếp tục
             </Button>
           </ListItem>
         </List>

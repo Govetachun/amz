@@ -58,7 +58,7 @@ function Register() {
     <Layout title="Register">
       <form onSubmit={handleSubmit(submitHandler)} className={classes.form}>
         <Typography component="h1" variant="h1">
-          Register
+          Đăng kí
         </Typography>
         <List>
           <ListItem>
@@ -110,8 +110,8 @@ function Register() {
                   helperText={
                     errors.email
                       ? errors.email.type === 'pattern'
-                        ? 'Email is not valid'
-                        : 'Email is required'
+                        ? 'Email không hợp lệ'
+                        : 'Mời nhập Email'
                       : ''
                   }
                   {...field}
@@ -139,8 +139,8 @@ function Register() {
                   helperText={
                     errors.password
                       ? errors.password.type === 'minLength'
-                        ? 'Password length is more than 5'
-                        : 'Password is required'
+                        ? 'Độ dài password phải lớn hơn 5'
+                        : 'Mời nhập password'
                       : ''
                   }
                   {...field}
@@ -168,8 +168,8 @@ function Register() {
                   helperText={
                     errors.confirmPassword
                       ? errors.confirmPassword.type === 'minLength'
-                        ? 'Confirm Password length is more than 5'
-                        : 'Confirm Password is required'
+                        ? 'Độ dài password phải lớn hơn 5'
+                        : 'Mời nhập xác nhận password'
                       : ''
                   }
                   {...field}
@@ -179,13 +179,13 @@ function Register() {
           </ListItem>
           <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">
-              Register
+              Đăng ký
             </Button>
           </ListItem>
           <ListItem>
-            Already have an account? &nbsp;
+            Đã có tài khoản? &nbsp;
             <NextLink href={`/login?redirect=${redirect || '/'}`} passHref>
-              <Link>Login</Link>
+              <Link>Đăng nhập</Link>
             </NextLink>
           </ListItem>
         </List>

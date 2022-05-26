@@ -18,10 +18,10 @@ handler.put(async (req, res) => {
     };
     const paidOrder = await order.save();
     await db.disconnect();
-    res.send({ message: 'order paid', order: paidOrder });
+    res.send({ message: 'Đơn hàng đã thanh toán', order: paidOrder });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'order not found' });
+    res.status(404).send({ message: 'Không tìm thấy đơn hàng' });
   }
 });
 

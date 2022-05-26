@@ -46,13 +46,13 @@ function CartScreen() {
   return (
     <Layout title="Shopping Cart">
       <Typography component="h1" variant="h1">
-        Shopping Cart
+        Giỏ hàng của bạn
       </Typography>
       {cartItems.length === 0 ? (
         <div>
-          Cart is empty.{' '}
+          Giỏ hàng trống.{' '}
           <NextLink href="/" passHref>
-            <Link>Go Shopping</Link>
+            <Link>Shopping ngay</Link>
           </NextLink>
         </div>
       ) : (
@@ -62,11 +62,11 @@ function CartScreen() {
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell>image</TableCell>
-                    <TableCell>name</TableCell>
-                    <TableCell align="right">Quantity</TableCell>
-                    <TableCell align="right">Price</TableCell>
-                    <TableCell align="right">Action</TableCell>
+                    <TableCell>Ảnh</TableCell>
+                    <TableCell>Tên</TableCell>
+                    <TableCell align="right">Số lượng</TableCell>
+                    <TableCell align="right">Giá</TableCell>
+                    <TableCell align="right">Hành động</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -106,7 +106,7 @@ function CartScreen() {
                           ))}
                         </Select>
                       </TableCell>
-                      <TableCell align="right">${item.price}</TableCell>
+                      <TableCell align="right">{item.price}.000Đ</TableCell>
                       <TableCell align="right">
                         <Button
                           variant="contained"
@@ -127,9 +127,10 @@ function CartScreen() {
               <List>
                 <ListItem>
                   <Typography variant="h2">
-                    Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
-                    items) : $
+                    Tổng cộng ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
+                    món hàng) :
                     {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                    .000Đ
                   </Typography>
                 </ListItem>
                 <ListItem>
@@ -139,7 +140,7 @@ function CartScreen() {
                     color="primary"
                     fullWidth
                   >
-                    Check out
+                    Thanh toán
                   </Button>
                 </ListItem>
               </List>
